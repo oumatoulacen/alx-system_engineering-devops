@@ -1,2 +1,2 @@
 #!/bin/bash
-uniq read $1
+uniq $1
