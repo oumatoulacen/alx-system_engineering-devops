@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -A |find . ! -type f |wc -l
+ls -AR |find -type d |wc -l
