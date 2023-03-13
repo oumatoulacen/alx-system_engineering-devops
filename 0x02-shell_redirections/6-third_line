@@ -1,0 +1,2 @@
+#!/bin/bash
+cat iacta | -3 head | wc -l 1
