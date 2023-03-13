@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -A |find . -type d -name '*' | wc -l 
+ls -A |find . -type d | wc -l 
