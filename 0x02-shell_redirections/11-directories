@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -a |find . -type d | $(((wc -l)-2))
+ls -A |find . ! -type f |wc -l
