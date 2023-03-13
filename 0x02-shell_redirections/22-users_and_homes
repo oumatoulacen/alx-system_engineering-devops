@@ -1,2 +1,3 @@
 #!/bin/bash
-echo  $(users) $(pwd)
+getent passwd | awk -F: '{print $1 " " $6}' | sort
+
