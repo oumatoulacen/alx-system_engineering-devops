@@ -1,2 +1,2 @@
 #!/bin/bash
-count=0; for dir in $(find . -type d); do [ "$dir" != "." ] && [ "$dir" != ".." ] && ((count++)); done; echo "$count"
+$(find . -type d |wc -l) - 1
