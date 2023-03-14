@@ -1,0 +1,2 @@
+#!/bin/bash
+tr 'A-Za-z' 'P-ZA-Nn-za-m' <<< "$1"
