@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -d: -f1 /etc/passwd | xargs -I{} sh -c 'echo "{}: $(getent passwd {} | cut -d: -f6)"' | sort
+cut -d: -f1,6 /etc/passwd | sort
