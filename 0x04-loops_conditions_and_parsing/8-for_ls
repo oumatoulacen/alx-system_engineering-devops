@@ -8,5 +8,5 @@
 content=$(ls)
 for f in $content
 do
-	echo "$f" | cut -d '-' -f 2
+	echo "$f" | cut -d'-' -f 2
 done
