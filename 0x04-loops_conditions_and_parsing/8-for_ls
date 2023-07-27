@@ -5,11 +5,8 @@
 #	- In a list format
 #	- Where only the part of the name after the first dash is displayed
 
-for file in *
+content=$(ls)
+for file in "$content"
 do
-	if [ -f "$file" ] && [[ "$file" != .* ]]
-	then
-		name_after_dash="${file#*-}"
-		echo "$name_after_dash"
-	fi
+	echo "$file" | cut -d "-" -f 2
 done
