@@ -3,4 +3,4 @@
 # key ~/.ssh/school with the user ubuntu
 
 private_key=~/.ssh/school
-ssh ubuntu -i "$private_key"
+ssh ubuntu" -i $private_key
