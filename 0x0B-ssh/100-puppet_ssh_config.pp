@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+# Automating making file using Puppet
+
 file { '/etc/ssh/ssh_config':
 	ensure => present,
 	content => "
