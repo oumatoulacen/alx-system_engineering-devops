@@ -1,5 +1,5 @@
 file { '/etc/ssh/ssh_config':
-	ensure => 'file',
+	ensure => present,
 	content => "
 	# SSH client configuration
 	Host *
