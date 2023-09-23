@@ -1,10 +1,10 @@
-file { '/home/ubuntu/.ssh/ssh_config':
+file { '/etc/ssh/ssh_config':
 	ensure => 'file',
 	owner => 'ubuntu',
 	content => "
-		# SSH client configuration
-		Host *
-		IdentityFile ~/.shh/school
-		PasswordAuthentication no
+	# SSH client configuration
+	Host *
+	  IdentityFile ~/.shh/school
+	  PasswordAuthentication no
 	"
 }
