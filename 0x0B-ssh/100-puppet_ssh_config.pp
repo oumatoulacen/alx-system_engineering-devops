@@ -4,8 +4,8 @@ file { '/home/ubuntu/.ssh/ssh_config':
 	group => 'ubuntu',
 	mode => '0744',
 	content => "
-	host 100.25.163.174
-	IdentityFile ~/.ssh/school
-	PasswordAuthentication no
-	",
+		host 100.25.163.174
+		IdentityFile ~/.shh/school
+		PasswordAuthentication no
+	"
 }
