@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Capture the output of the 'date' command
+current_date=`date`
+
+echo "Current date and time: $current_date"
+

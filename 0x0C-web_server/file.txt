@@ -1,0 +1,7 @@
+# Read and print each line from a file
+file_path="/path/to/file.txt"
+
+while IFS= read -r line
+do
+    echo "$line"
+done < "$file_path"
