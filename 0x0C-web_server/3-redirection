@@ -5,6 +5,6 @@ redirect_url="https://www.youtube.com/watch?v=QH2-TGUlwu4"
 
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 
-sed -i "/server_name _;/a location \/redirect_me { return 301 $redirect_url; }" /etc/nginx/sites-available/default
+sudo sed -i "/server_name _;/a location \/redirect_me { return 301 $redirect_url; }" /etc/nginx/sites-available/default
 
 sudo systemctl reload nginx
