@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 # redirecting Nginx server to another page
 
-redirect_url="https://www.youtube.com/watch?v=QH2-TGUlwu4"
+redirect_url='https://www.youtube.com'
 
-sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+#sudo apt-get update -y
+#sudo apt-get install nginx -y
 
-sudo sed -i "/server_name _;/a location \/redirect_me { return 301 $redirect_url; }" /etc/nginx/sites-available/default
+# Create a custom HTML file with "Hello World!"
+echo "Hello World!" | sudo tee /var/www/html/index.htmt
 
-sudo systemctl reload nginx
+sudo sed -i "37i\ \n\tlocation /redirect_me {\n\t\treturn 301 $redirect_url; \n\t}\n" /etc/nginx/sites-available/default
+
+# Restart Nginx (without systemctl)
+sudo /etc/init.d/nginx restart
