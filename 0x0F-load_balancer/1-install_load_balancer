@@ -23,4 +23,4 @@ EOL
 echo "$frontend_block" | sudo tee -a /etc/haproxy/haproxy.cfg
 echo "$backend_block" | sudo tee -a /etc/haproxy/haproxy.cfg
 
-sudo systemctl restart haproxy
+sudo service haproxy restart
