@@ -6,7 +6,7 @@ exec { 'apt-update':
   provider => shell,
 }
 
-exec { 'apt-get':
+-> exec { 'apt-get':
   command => 'apt-get -y install nginx',
   path    => '/usr/bin:/bin',
   require => Exec['apt-update'],
@@ -17,9 +17,7 @@ exec { 'apt-get':
   provider => shell,
 }
 
--> exec { 'restart_nginx':
-  command     => '/usr/sbin/service nginx restart',
-  refreshonly => true,
+-> exec { 'restart':
+  command => 'sudo service nginx restart',
+  provider => shell,
 }
-
-
