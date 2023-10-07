@@ -1,8 +1,8 @@
-global
+global 
         log /dev/log    local0
         log /dev/log    local1 notice
         chroot /var/lib/haproxy
-        stats socket /run/haproxy/admin.sock mode 660 level admin
+        stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
         stats timeout 30s
         user haproxy
         group haproxy
@@ -32,14 +32,12 @@ defaults
         errorfile 502 /etc/haproxy/errors/502.http
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
-
-frontend my_frontend
+frontend http-in 
         bind *:80
-        bind *:443 ssl crt /etc/haproxy/certs/www.oumatou.tech.pem
-        redirect scheme https if !{ ssl_fc }
-        default_backend alx_backend
-
-backend alx_backend
+        bind *:443 ssl crt /etc/haproxy/certs/www.oumatou.pem
+        redirect scheme https code 301 if !{ ssl_fc }
+        default_backend servers
+backend servers
         balance roundrobin
-        server 380223-web-01 100.27.4.102:80 check
-        server 380223-web-02 54.165.197.71:80 check
+        server 383166-web-02 100.26.167.149:80 check
+        server 383166-web-01 100.25.163.174:80 check
