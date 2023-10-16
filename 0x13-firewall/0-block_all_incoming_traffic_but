@@ -1,0 +1,4 @@
+sudo ufw enable
+sudo usw allow 22
+sudo usw allow 443
+sudo usw allow 80
