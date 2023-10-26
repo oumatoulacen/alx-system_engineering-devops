@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 """ Python script to export data in the JSON format. """
 
@@ -6,9 +7,10 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    url = "https://jsonplaceholder.typicode.com"
-    name = (requests.get(url + "/users/{}".format(argv[1])).json().get("name"))
-    todos = requests.get(url + "/user/{}/todos".format(argv[1])).json()
+    url = "https://jsonplaceholder.typicode.com/user"
+    name = requests.get(url + "s/{}".format(argv[1])).json().get("username")
+    todos = requests.get(url + "/{}/todos".format(argv[1])).json()
+
     with open("{}.json".format(argv[1]), mode="w") as f:
         row_list = []
         data = {}
