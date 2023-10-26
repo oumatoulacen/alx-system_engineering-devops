@@ -1,17 +1,23 @@
 #!/usr/bin/python3
-""" Python script to export data in the CSV format. """
+""" Python script to export data in the JSON format. """
 
-import csv
+import json
 import requests
 from sys import argv
 
 if __name__ == "__main__":
-    url = "https://jsonplaceholder.typicode.com/"
-    name = requests.get(url + "users/{}".format(argv[1])).json().get("username")
-    todos = requests.get(url + "todos/{}".format(argv[1])).json()
+    url = "https://jsonplaceholder.typicode.com/user"
+    name = requests.get(url + "s/{}".format(argv[1])).json().get("username")
+    todos = requests.get(url + "/{}/todos".format(argv[1])).json()
 
-    with open("{}.csv".format(argv[1]), mode="w") as f:
-        csv_writer = csv.writer(f, quoting=csv.QUOTE_ALL)
+    with open("{}.json".format(argv[1]), mode="w") as f:
+        row_list = []
+        data = {}
         for todo in todos:
-            rows = [argv[1], name, todo.get("completed"), todo.get("title")]
-            csv_writer.writerow(rows)
+            row = {}
+            row['task'] = todo.get("title")
+            row['completed'] = todo.get("completed")
+            row['username'] = name
+            row_list.append(row)
+        data[argv[1]] = row_list
+        json.dump(data, f)
