@@ -6,8 +6,8 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    url = "https://jsonplaceholder.typicode.com/user"
-    name = requests.get(url + "s/{}".format(argv[1])).json().get("username")
+    url = "https://jsonplaceholder.typicode.com/users"
+    name = requests.get(url + "/{}".format(argv[1])).json().get("username")
     todos = requests.get(url + "/{}/todos".format(argv[1])).json()
 
     with open("{}.json".format(argv[1]), mode="w") as f:
