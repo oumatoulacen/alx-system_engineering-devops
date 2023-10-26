@@ -8,9 +8,9 @@ if __name__ == "__main__":
     with open("todo_all_employees.json", mode="w") as f:
         data = {}
         for i in range(1, 11):
-            url = "https://jsonplaceholder.typicode.com"
-            name = (requests.get(url + "/users/{}".format(i)).json().get("name"))
-            todos = requests.get(url + "/user/{}/todos".format(i)).json()
+            url = "https://jsonplaceholder.typicode.com/user"
+            name = (requests.get(url + "s/{}".format(i)).json().get("name"))
+            todos = requests.get(url + "/{}/todos".format(i)).json()
             row_list = []
             for todo in todos:
                 row = {}
