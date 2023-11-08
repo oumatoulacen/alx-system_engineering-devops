@@ -1,17 +1,22 @@
 #!/usr/bin/python3
-'''recursive function returns titles of all hot articles of a subreddit'''
+"""a module recursively requests Reddit API to get data"""
 import requests
 
 
-def recurse(subreddit, hot_list=[]):
-    ''' a recursive function that queries the Reddit API '''
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
-    res = requests.get(url)
-    if res.status_code == 200:
-        all_data = res.json()['data']
-        if all_data:
-            for data in all_data:
-                hot_list.append(data['title'])
-        return hot_list.extend(recurse(subreddit, hot_list))
-    else:
+def recurse(subreddit, hot_list=[], after=25):
+    """a function prints titles of all hot articles for a given subreddit"""
+    url = 'https://www.reddit.com/r/{}/.json'.format(subreddit)
+    header = {'User-Agent': 'Reddit API test'}
+    param = {'after': after}
+    response = requests.get(url, headers=header, allow_redirects=False,
+                            params=param)
+    dict = response.json()
+    if dict.get("error", 200) == 404:
         return None
+    if after is None:
+        return hot_list
+    l_list = dict.get("data").get("children")
+    for dic in l_list:
+        hot_list.append(dic.get("data").get("title"))
+    curr_a = dict.get("data").get("after")
+    return recurse(subreddit, hot_list, curr_a)
