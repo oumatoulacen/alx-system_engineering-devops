@@ -35,7 +35,7 @@ def count_words(subreddit, word_list=[], hot_list=[], after=25):
                             params=param)
     try:
         dict = response.json()
-    except:
+    except Exception:
         print
         return None
     if dict.get("error", 200) == 404:
