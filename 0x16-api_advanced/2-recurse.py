@@ -2,7 +2,7 @@
 '''recursive function returns titles of all hot articles of a subreddit'''
 import requests
 
-global prev;
+
 def recurse(subreddit, hot_list=[]):
     ''' a recursive function that queries the Reddit API '''
     url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
