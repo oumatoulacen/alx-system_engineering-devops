@@ -16,4 +16,4 @@ def recurse(subreddit, hot_list=[]):
             hot_list.extend(recurse(subreddit, hot_list))
         return hot_list
     else:
-        return None
+        return "None"
