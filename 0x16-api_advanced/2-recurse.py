@@ -12,6 +12,8 @@ def recurse(subreddit, hot_list=[]):
         if all_data:
             for data in all_data:
                 hot_list.append(data['title'])
-        return hot_list.extend(recurse(subreddit, hot_list))
+        if len(all_data) > 10:
+            hot_list.extend(recurse(subreddit, hot_list))
+        return hot_list
     else:
         return None
