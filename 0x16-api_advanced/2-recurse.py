@@ -18,5 +18,5 @@ def recurse(subreddit, hot_list=[], after=25):
     l_list = dict.get("data").get("children")
     for dic in l_list:
         hot_list.append(dic.get("data").get("title"))
-    curr_a = dict.get("data").get("after")
-    return recurse(subreddit, hot_list, curr_a)
+    curr_after = dict.get("data").get("after")
+    return recurse(subreddit, hot_list, curr_after)
