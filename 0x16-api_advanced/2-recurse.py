@@ -9,8 +9,9 @@ def recurse(subreddit, hot_list=[]):
     res = requests.get(url)
     if res.status_code == 200:
         all_data = res.json()['data']
-        for data in all_data:
-            hot_list.append(data['title'])
+        if all_data:
+            for data in all_data:
+                hot_list.append(data['title'])
         return hot_list.extend(recurse(subreddit, hot_list))
     else:
         return None
